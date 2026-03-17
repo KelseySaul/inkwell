@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-dark: #070b13;
+  --color-primary: #00f2ff;
+  --color-primary-glow: rgba(0, 242, 255, 0.5);
+  --color-secondary: #00d4ff;
+  --color-accent: #7000ff;
+  --color-text-main: #f0f4f8;
+  --color-text-dim: #94a3b8;
+
+  --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
+
+  --shadow-primary-glow: 0 0 15px rgba(0, 242, 255, 0.5);
+  --shadow-primary-glow-lg: 0 0 25px rgba(0, 242, 255, 0.5);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #070b13;
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --primary: #00f2ff;
+  --primary-glow: rgba(0, 242, 255, 0.4);
+  --secondary: #00d4ff;
+  --accent: #7000ff;
+  --text-main: #f0f4f8;
+  --text-dim: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg-dark text-text-main font-inter antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-outfit;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-slate-900/70 border border-white/10 rounded-2xl;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px var(--primary-glow);
+  }
+
+  .neon-btn {
+    @apply bg-primary text-bg-dark px-6 py-3 rounded-lg font-bold transition-all duration-300;
+    box-shadow: 0 0 15px var(--primary-glow);
+  }
+
+  .neon-btn:hover {
+    @apply -translate-y-0.5 shadow-lg;
+    box-shadow: 0 0 25px var(--primary-glow);
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+.text-dim {
+  @apply text-slate-400;
+}
+
+.text-primary {
+  @apply text-[#00f2ff];
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-800 rounded-full hover:bg-slate-700;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
