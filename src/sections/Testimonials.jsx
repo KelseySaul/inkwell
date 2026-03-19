@@ -3,17 +3,17 @@ import { Star, Quote } from 'lucide-react'
 
 const testimonials = [
   {
-    name: 'Brian Otieno',
+    name: 'Michel Eliz',
     role: 'Founder, AfriFood',
-    avatar: 'BO',
+    avatar: 'ME',
     color: 'bg-orange-500',
     review: 'Inkwell&Code delivered a stunning web platform for AfriFood that exceeded every expectation. Professional, fast, and incredibly talented team.',
     stars: 5,
   },
   {
-    name: 'Dr. Sarah Kimani',
-    role: 'Director, KeSLP',
-    avatar: 'SK',
+    name: 'Dr. Annette Okoth',
+    role: 'President',
+    avatar: 'AO',
     color: 'bg-indigo-500',
     review: 'Our new website gave the Kenya Science Leadership Program the professional online presence it deserved. The team understood our vision perfectly.',
     stars: 5,
@@ -58,7 +58,7 @@ export default function Testimonials() {
 
       <div className="container px-4 md:px-8 relative">
         <div className="text-center mb-16">
-          <span className="section-label">Social Proof</span>
+
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             What Our <span className="text-primary">Clients Say</span>
           </h2>
