@@ -5,75 +5,84 @@ const services = [
   {
     title: 'Web Development',
     description: 'Custom, high-performance web applications built with React, Node, and Supabase.',
-    icon: <Code className="text-primary" size={32} />,
-    color: 'var(--primary)'
+    icon: <Code size={26} />,
+    bg: 'bg-indigo-500',
   },
   {
     title: 'Graphic Design',
     description: 'Logo design, branding, and marketing materials that capture your brand essence.',
-    icon: <Palette className="text-primary" size={32} />,
-    color: 'var(--primary)'
+    icon: <Palette size={26} />,
+    bg: 'bg-purple-500',
   },
   {
     title: 'UI/UX Design',
     description: 'Intuitive and beautiful interfaces designed for the best possible user experience.',
-    icon: <Layout className="text-primary" size={32} />,
-    color: 'var(--primary)'
+    icon: <Layout size={26} />,
+    bg: 'bg-blue-500',
   },
   {
     title: 'Premium Printing',
     description: 'High-quality printing services for businesses, from stationery to large scale banners.',
-    icon: <Printer className="text-primary" size={32} />,
-    color: 'var(--primary)'
+    icon: <Printer size={26} />,
+    bg: 'bg-violet-500',
   },
   {
     title: 'Fullstack Systems',
     description: 'Custom management systems (Hospital, Home, ERP) tailored to your needs.',
-    icon: <Database className="text-primary" size={32} />,
-    color: 'var(--primary)'
+    icon: <Database size={26} />,
+    bg: 'bg-fuchsia-500',
   },
   {
     title: 'App Development',
     description: 'Responsive and robust mobile-first applications for all platforms.',
-    icon: <Smartphone className="text-primary" size={32} />,
-    color: 'var(--primary)'
+    icon: <Smartphone size={26} />,
+    bg: 'bg-sky-500',
   }
 ]
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 relative">
+    <section id="services" className="py-28 bg-slate-50 relative">
+      {/* Decorative top edge */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+
       <div className="container px-4 md:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Our <span className="text-primary">Services</span></h2>
-          <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-6"></div>
-          <p className="text-dim max-w-2xl mx-auto">
+          <span className="section-label">What We Do</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            Our <span className="text-primary">Services</span>
+          </h2>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">
             We provide a comprehensive suite of creative and technical services to help your business grow.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="glass p-8 group hover:border-primary/50 transition-all duration-300"
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(99,102,241,0.12)' }}
+              className="bg-white rounded-2xl p-7 border border-slate-100 shadow-sm transition-all duration-300 group cursor-default"
             >
-              <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 border border-primary/20 group-hover:bg-primary/20 transition-all">
+              <div className={`w-12 h-12 ${service.bg} text-white rounded-xl flex items-center justify-center mb-5 shadow-lg`}>
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{service.title}</h3>
-              <p className="text-dim leading-relaxed">
+              <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-slate-500 leading-relaxed text-sm">
                 {service.description}
               </p>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
     </section>
   )
 }

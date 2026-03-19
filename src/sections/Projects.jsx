@@ -36,7 +36,7 @@ const webProjects = [
     category: 'Web Development',
     image: '/images/t1.png',
     description: 'A home management system with M-Pesa integration and Tinder-style UI.',
-    link: '#',
+    link: 'https://realestate-nu-gray.vercel.app/',
     tags: ['React', 'M-Pesa', 'Systems']
   }
 ]
@@ -57,27 +57,27 @@ export default function Projects() {
   const displayedProjects = filter === 'Web' ? webProjects : graphicsProjects
 
   return (
-    <section id="projects" className="py-24 bg-[#0a0f18]/50 overflow-hidden">
+    <section id="projects" className="py-28 bg-white overflow-hidden">
       <div className="container px-4 md:px-8">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured <span className="text-primary">Projects</span></h2>
-            <div className="w-20 h-1 bg-primary rounded-full mb-6"></div>
-            <p className="text-dim max-w-xl">
+            <span className="section-label">Our Portfolio</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Featured <span className="text-primary">Projects</span></h2>
+            <p className="text-slate-500 max-w-xl">
               From sophisticated web systems to creative graphic masterpieces, we deliver excellence in every pixel.
             </p>
           </div>
           
-          <div className="flex glass p-1 rounded-xl">
+          <div className="flex bg-slate-100 p-1 rounded-xl">
             <button 
               onClick={() => setFilter('Web')}
-              className={`px-6 py-2 rounded-lg transition-all ${filter === 'Web' ? 'bg-primary text-bg-dark font-bold' : 'text-white'}`}
+              className={`px-6 py-2 rounded-lg transition-all font-medium text-sm ${filter === 'Web' ? 'bg-white text-primary shadow-sm font-semibold' : 'text-slate-500 hover:text-slate-700'}`}
             >
               Web Dev
             </button>
             <button 
               onClick={() => setFilter('Graphics')}
-              className={`px-6 py-2 rounded-lg transition-all ${filter === 'Graphics' ? 'bg-primary text-bg-dark font-bold' : 'text-white'}`}
+              className={`px-6 py-2 rounded-lg transition-all font-medium text-sm ${filter === 'Graphics' ? 'bg-white text-primary shadow-sm font-semibold' : 'text-slate-500 hover:text-slate-700'}`}
             >
               Graphics
             </button>
@@ -97,7 +97,7 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className="glass group overflow-hidden"
+                className="bg-white border border-gray-100 shadow-sm rounded-2xl group overflow-hidden hover:shadow-md transition-all duration-300"
               >
                 <div className="relative h-64 overflow-hidden">
                   <img 
@@ -105,31 +105,32 @@ export default function Projects() {
                     alt={project.title} 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
-                      e.target.src = 'https://via.placeholder.com/600x400?text=Project+Image'
+                      e.target.onerror = null
+                      e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23eef2ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236366f1' font-family='sans-serif' font-size='18'%3EImage Coming Soon%3C/text%3E%3C/svg%3E"
                     }}
                   />
-                  <div className="absolute inset-0 bg-bg-dark/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                     {project.link && project.link !== '#' && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary text-bg-dark rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
                         <ExternalLink size={20} />
                       </a>
                     )}
-                    <button className="w-12 h-12 glass text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                    <button className="w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
                       <ZoomIn size={20} />
                     </button>
                   </div>
                 </div>
                 
                 <div className="p-6">
-                  <div className="flex gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase tracking-wider text-primary px-2 py-1 glass rounded-md border-primary/20">
+                      <span key={tag} className="text-[10px] uppercase tracking-wider text-primary font-semibold px-2.5 py-1 bg-indigo-50 rounded-md">
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                  <p className="text-dim text-sm line-clamp-2">
+                  <h3 className="text-xl font-bold mb-2 text-slate-900 group-hover:text-primary transition-colors">{project.title}</h3>
+                  <p className="text-slate-500 text-sm line-clamp-2">
                     {project.description}
                   </p>
                 </div>
