@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const testimonials = [
   {
@@ -46,7 +46,28 @@ function StarRating({ count }) {
   )
 }
 
+function TestimonialCard({ t }) {
+  return (
+    <div className="testimonial-card bg-white rounded-2xl p-7 border border-slate-100 shadow-sm w-[320px] shrink-0 mx-3">
+      <StarRating count={t.stars} />
+      <p className="text-slate-600 leading-relaxed my-4 text-sm">"{t.review}"</p>
+      <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
+        <div className={`w-10 h-10 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0`}>
+          {t.avatar}
+        </div>
+        <div>
+          <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
+          <p className="text-slate-400 text-xs">{t.role}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Testimonials() {
+  // Duplicate twice for seamless infinite loop
+  const looped = [...testimonials, ...testimonials, ...testimonials]
+
   return (
     <section id="testimonials" className="py-28 bg-slate-50 relative overflow-hidden">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
@@ -56,40 +77,33 @@ export default function Testimonials() {
         <Quote size={160} strokeWidth={1} />
       </div>
 
-      <div className="container px-4 md:px-8 relative">
-        <div className="text-center mb-16">
-
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            What Our <span className="text-primary">Clients Say</span>
-          </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto">
-            Don't just take our word for it — hear from the businesses we've helped grow.
-          </p>
+      <div className="relative">
+        <div className="text-center mb-16 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              What Our <span className="text-primary">Clients Say</span>
+            </h2>
+            <p className="text-slate-500 max-w-2xl mx-auto">
+              Don't just take our word for it — hear from the businesses we've helped grow.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-md transition-shadow duration-300"
-            >
-              <StarRating count={t.stars} />
-              <p className="text-slate-600 leading-relaxed my-5 text-sm">"{t.review}"</p>
-              <div className="flex items-center gap-4 pt-4 border-t border-slate-100">
-                <div className={`w-11 h-11 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0`}>
-                  {t.avatar}
-                </div>
-                <div>
-                  <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
-                  <p className="text-slate-400 text-xs">{t.role}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        {/* Marquee track — full width, no container constraint */}
+        <div className="marquee-wrapper">
+          {/* Fade edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-slate-50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-slate-50 to-transparent" />
+
+          <div className="marquee-track">
+            {looped.map((t, i) => (
+              <TestimonialCard key={i} t={t} />
+            ))}
+          </div>
         </div>
       </div>
 
