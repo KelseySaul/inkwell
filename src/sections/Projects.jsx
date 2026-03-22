@@ -133,6 +133,16 @@ export default function Projects() {
                   <p className="text-slate-500 text-sm line-clamp-2">
                     {project.description}
                   </p>
+                  {project.link && project.link !== '#' && (
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="md:hidden mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-indigo-700 transition-colors"
+                    >
+                      View Live Project <ExternalLink size={16} />
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
