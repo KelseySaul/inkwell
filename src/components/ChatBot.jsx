@@ -76,16 +76,17 @@ export default function ChatBot() {
                 const utterance = new SpeechSynthesisUtterance(sentence)
                 const voices = speechSynthesisRef.current.getVoices()
 
-                // Prioritize much better "Google" or "Natural" male voices
+                // Prioritize better voices
+                const naturalVoice = voices.find(v => v.name.includes('Natural') || v.name.includes('Premium'))
                 const googleMale = voices.find(v => v.lang === 'en-US' && v.name.includes('Google') && !v.name.includes('Female'))
                 const maleVoice = voices.find(v => v.lang === 'en-US' && /David|Mark|Guy|Thomas/i.test(v.name))
                 const fallback = voices.find(v => v.lang === 'en-US' && !/Female/i.test(v.name))
 
-                utterance.voice = googleMale || maleVoice || fallback || voices[0]
+                utterance.voice = naturalVoice || googleMale || maleVoice || fallback || voices[0]
 
-                // Human-like variations
-                utterance.rate = 1.05 // Slightly faster than default is often more natural
-                utterance.pitch = 0.92 // Masculine tone
+                // Faster, more natural speech
+                utterance.rate = 1.3 // Increased rate for faster, less drawn-out speech
+                utterance.pitch = 1.0 // Normal pitch sounds much less artificial
                 utterance.volume = 1.0
 
                 utterance.onstart = () => setIsSpeaking(true)
@@ -187,7 +188,7 @@ export default function ChatBot() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleOpen}
-                className={`fixed bottom-[96px] right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors wa-float ${isOpen ? 'bg-slate-800 text-white' : 'bg-indigo-600 text-white'
+                className={`fixed bottom-[84px] sm:bottom-[96px] right-4 sm:right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors wa-float ${isOpen ? 'bg-slate-800 text-white' : 'bg-indigo-600 text-white'
                     }`}
             >
                 {isOpen ? <X size={24} /> : <Bot size={28} />}
@@ -205,7 +206,7 @@ export default function ChatBot() {
                         initial={{ opacity: 0, y: 20, scale: 0.9, transformOrigin: 'bottom right' }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.9 }}
-                        className="fixed bottom-[165px] right-6 w-[350px] max-w-[calc(100vw-48px)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100"
+                        className="fixed bottom-[150px] sm:bottom-[165px] right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[380px] max-w-[400px] bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100 z-50 flex flex-col max-h-[calc(100vh-160px)]"
                     >
                         <div className="bg-slate-900 px-5 py-4 flex items-center justify-between text-white">
                             <div className="flex items-center gap-3">
@@ -236,7 +237,7 @@ export default function ChatBot() {
                             </div>
                         </div>
 
-                        <div className="h-[380px] overflow-y-auto p-5 bg-slate-50/50 flex flex-col gap-4">
+                        <div className="flex-1 overflow-y-auto min-h-[50vh] max-h-[60vh] sm:min-h-[380px] sm:max-h-[500px] p-5 bg-slate-50/50 flex flex-col gap-4">
                             {mode === 'menu' ? (
                                 <div className="h-full flex flex-col items-center justify-center text-center p-4">
                                     <div className="w-16 h-16 bg-indigo-100 text-indigo-500 rounded-2xl flex items-center justify-center mb-4">

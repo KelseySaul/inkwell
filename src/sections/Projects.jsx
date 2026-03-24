@@ -103,28 +103,30 @@ export default function Projects() {
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
                     onError={(e) => {
                       e.target.onerror = null
                       e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect width='600' height='400' fill='%23eef2ff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236366f1' font-family='sans-serif' font-size='18'%3EImage Coming Soon%3C/text%3E%3C/svg%3E"
                     }}
                   />
-                  <div className="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                    {project.link && project.link !== '#' && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
-                    <button className="w-12 h-12 bg-white/20 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                      <ZoomIn size={20} />
-                    </button>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                    <div className="flex gap-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      {project.link && project.link !== '#' && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:scale-110 hover:bg-indigo-400 transition-all shadow-xl shadow-indigo-500/30">
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                      <button className="w-12 h-12 bg-white/20 backdrop-blur-md border border-white/30 text-white rounded-full flex items-center justify-center hover:scale-110 hover:bg-white/30 transition-all">
+                        <ZoomIn size={20} />
+                      </button>
+                    </div>
                   </div>
                 </div>
                 
                 <div className="p-6">
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map(tag => (
-                      <span key={tag} className="text-[10px] uppercase tracking-wider text-primary font-semibold px-2.5 py-1 bg-indigo-50 rounded-md">
+                      <span key={tag} className="text-[10px] uppercase tracking-widest text-indigo-700 font-bold px-3 py-1 bg-indigo-50/80 border border-indigo-100/50 rounded-full">
                         {tag}
                       </span>
                     ))}
@@ -138,7 +140,7 @@ export default function Projects() {
                       href={project.link} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="md:hidden mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-indigo-700 transition-colors"
+                      className="md:hidden mt-5 inline-flex items-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-800 transition-colors bg-indigo-50 px-4 py-2 rounded-lg w-full justify-center"
                     >
                       View Live Project <ExternalLink size={16} />
                     </a>

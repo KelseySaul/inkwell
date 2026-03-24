@@ -25,8 +25,8 @@ export default function About() {
             className="relative"
           >
             {/* Main card */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-10 text-white shadow-2xl">
-              <div className="text-5xl font-extrabold text-white mb-2">5+</div>
+            <div className="bg-gradient-to-br from-slate-800 via-indigo-950 to-slate-900 rounded-3xl p-10 text-white shadow-2xl shadow-indigo-900/20 border border-slate-700/50">
+              <div className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400 mb-2">5+</div>
               <div className="text-slate-300 text-lg mb-8">Years crafting digital excellence</div>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -35,9 +35,11 @@ export default function About() {
                   { n: '6', l: 'Services' },
                   { n: '100%', l: 'Dedication' },
                 ].map(item => (
-                  <div key={item.l} className="bg-white/10 rounded-2xl p-4 border border-white/10">
-                    <div className="text-2xl font-bold text-white">{item.n}</div>
-                    <div className="text-slate-400 text-sm">{item.l}</div>
+                  <div key={item.l} className="bg-white/5 hover:bg-white/10 transition-colors rounded-2xl p-4 border border-white/10 group cursor-default">
+                    <div className="mb-1">
+                      <div className="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">{item.n}</div>
+                    </div>
+                    <div className="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">{item.l}</div>
                   </div>
                 ))}
               </div>
@@ -65,11 +67,19 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               A Studio Built for <span className="text-primary">Bold Brands</span>
             </h2>
-            <p className="text-slate-500 leading-relaxed mb-6">
+            <p className="text-slate-500 leading-relaxed mb-6 font-medium text-lg">
               Inkwell&Code is a Nairobi-based creative studio that blends the precision of 
               code with the artistry of design. We partner with startups, SMEs, and 
               established businesses to create compelling digital experiences and brand identities.
             </p>
+            <div className="bg-indigo-50 border-l-4 border-indigo-500 p-5 rounded-r-xl mb-6">
+              <h3 className="text-indigo-900 font-bold mb-2">Our Story</h3>
+              <p className="text-indigo-700/80 leading-relaxed text-sm">
+                What started as a shared passion for beautiful interfaces and robust systems quickly grew into Inkwell&Code. 
+                We believe that every brand has a unique voice, and our mission is to translate that voice into experiences 
+                that resonate and drive growth.
+              </p>
+            </div>
             <p className="text-slate-500 leading-relaxed mb-10">
               From your first website to a complete brand overhaul, we bring the same 
               level of craft and dedication to every project — no matter the size.

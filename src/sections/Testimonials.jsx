@@ -6,7 +6,7 @@ const testimonials = [
     name: 'Michel Eliz',
     role: 'Founder, AfriFood',
     avatar: 'ME',
-    color: 'bg-orange-500',
+    color: 'bg-gradient-to-br from-orange-400 to-pink-500',
     review: 'Inkwell&Code delivered a stunning web platform for AfriFood that exceeded every expectation. Professional, fast, and incredibly talented team.',
     stars: 5,
   },
@@ -14,7 +14,7 @@ const testimonials = [
     name: 'Dr. Annette Okoth',
     role: 'President',
     avatar: 'AO',
-    color: 'bg-indigo-500',
+    color: 'bg-gradient-to-br from-indigo-400 to-purple-600',
     review: 'Our new website gave the Kenya Science Leadership Program the professional online presence it deserved. The team understood our vision perfectly.',
     stars: 5,
   },
@@ -22,7 +22,7 @@ const testimonials = [
     name: 'James Mwangi',
     role: 'CEO, Realty Kenya',
     avatar: 'JM',
-    color: 'bg-emerald-500',
+    color: 'bg-gradient-to-br from-emerald-400 to-teal-600',
     review: 'The Tinder for Houses app they built is exactly what our real estate business needed. Sleek, intuitive, and packed with features. Highly recommend.',
     stars: 5,
   },
@@ -30,7 +30,7 @@ const testimonials = [
     name: 'Amina Hassan',
     role: 'Brand Manager, StyleKe',
     avatar: 'AH',
-    color: 'bg-purple-500',
+    color: 'bg-gradient-to-br from-purple-400 to-pink-600',
     review: 'Our brand identity package from Inkwell&Code was world-class. The logo, colours, and print materials came together beautifully.',
     stars: 5,
   },
@@ -48,16 +48,18 @@ function StarRating({ count }) {
 
 function TestimonialCard({ t }) {
   return (
-    <div className="testimonial-card bg-white rounded-2xl p-7 border border-slate-100 shadow-sm w-[320px] shrink-0 mx-3">
-      <StarRating count={t.stars} />
-      <p className="text-slate-600 leading-relaxed my-4 text-sm">"{t.review}"</p>
-      <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-        <div className={`w-10 h-10 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0`}>
+    <div className="testimonial-card bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.12)] w-[340px] shrink-0 mx-4 flex flex-col justify-between">
+      <div>
+        <StarRating count={t.stars} />
+        <p className="text-slate-600 leading-relaxed my-5 text-[15px] italic">"{t.review}"</p>
+      </div>
+      <div className="flex items-center gap-4 pt-5 border-t border-slate-50 mt-auto">
+        <div className={`w-12 h-12 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-inner ring-4 ring-slate-50`}>
           {t.avatar}
         </div>
         <div>
-          <p className="font-semibold text-slate-900 text-sm">{t.name}</p>
-          <p className="text-slate-400 text-xs">{t.role}</p>
+          <p className="font-bold text-slate-900">{t.name}</p>
+          <p className="text-slate-500 text-[11px] font-bold uppercase tracking-wider mt-0.5">{t.role}</p>
         </div>
       </div>
     </div>

@@ -65,16 +65,17 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(99,102,241,0.12)' }}
-              className="bg-white rounded-2xl p-7 border border-slate-100 shadow-sm transition-all duration-300 group cursor-default"
+              whileHover={{ y: -8, boxShadow: '0 25px 50px rgba(99,102,241,0.15)' }}
+              className="bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-indigo-100 transition-all duration-300 group cursor-default relative overflow-hidden"
             >
-              <div className={`w-12 h-12 ${service.bg} text-white rounded-xl flex items-center justify-center mb-5 shadow-lg`}>
+              <div className={`absolute top-0 right-0 w-32 h-32 ${service.bg} opacity-[0.03] rounded-bl-full transition-transform duration-500 group-hover:opacity-[0.08] group-hover:scale-110 -z-10`} />
+              <div className={`w-14 h-14 ${service.bg} text-white rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-indigo-500/20`}>
                 {service.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-primary transition-colors">
+              <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-indigo-600 transition-colors">
                 {service.title}
               </h3>
-              <p className="text-slate-500 leading-relaxed text-sm">
+              <p className="text-slate-500 leading-relaxed text-sm group-hover:text-slate-600 transition-colors">
                 {service.description}
               </p>
             </motion.div>

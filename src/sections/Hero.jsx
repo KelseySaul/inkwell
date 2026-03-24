@@ -40,7 +40,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-lg text-slate-500 mb-10 leading-relaxed max-w-lg"
+              className="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg"
             >
               Inkwell&Code is a premier creative studio in Nairobi. We blend cutting-edge 
               web development with world-class graphic design to build brands that stand out.
@@ -127,7 +127,7 @@ export default function Hero() {
                 key={i}
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
-                className={`absolute bg-white border border-slate-100 shadow-lg rounded-xl px-4 py-3 flex items-center gap-3 ${
+                className={`absolute bg-white/80 backdrop-blur-md border border-slate-100/50 shadow-xl shadow-indigo-500/5 hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-300 rounded-xl px-4 py-3 flex items-center gap-3 ${
                   i === 0 ? '-left-8 top-8' : i === 1 ? '-right-4 top-1/2' : '-left-6 bottom-8'
                 }`}
               >
