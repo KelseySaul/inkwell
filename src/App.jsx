@@ -31,7 +31,7 @@ function WhatsAppBubble() {
 
 function App() {
   return (
-    <div className="bg-white min-h-screen text-slate-900 selection:bg-indigo-100 selection:text-indigo-700">
+    <div className="min-h-screen selection:bg-indigo-100 selection:text-indigo-700 dark:selection:bg-primary-glow dark:selection:text-primary">
       <Navbar />
       <main>
         <Hero />

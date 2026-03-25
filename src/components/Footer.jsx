@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <span className="text-2xl font-bold tracking-tight text-white">
-              Inkwell<span className="text-indigo-400">&</span>Code
+              Inkwell<span className="text-primary">&</span>Code
             </span>
           </div>
           <p className="text-slate-400 max-w-sm mb-6 text-sm leading-relaxed">

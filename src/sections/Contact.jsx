@@ -157,16 +157,22 @@ export default function Contact() {
 
   return (
     <>
-      <section id="contact" className="py-28 relative overflow-hidden bg-slate-50">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+      <section id="contact" className="py-28 relative overflow-hidden bg-slate-50 dark:bg-bg-dark transition-colors duration-300">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 dark:via-indigo-500/30 to-transparent" />
         <div className="container px-4 md:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
             <span className="section-label">Let's Talk</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Get a <span className="text-primary">Quote</span></h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">Get a <span className="text-primary">Quote</span></h2>
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
               Ready to bring your vision to life? Browse our pricing below, then send us a message.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* LEFT — contact info + pricing */}
@@ -217,15 +223,15 @@ export default function Contact() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-white border border-gray-100 shadow-sm rounded-2xl p-8 md:p-12"
+              className="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 shadow-sm rounded-2xl p-8 md:p-12"
             >
               {isSubmitted ? (
                 <div className="text-center py-12">
                   <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="text-primary" size={48} />
                   </div>
-                  <h3 className="text-3xl font-bold mb-3">Message Sent!</h3>
-                  <p className="text-dim mb-2 text-sm">
+                  <h3 className="text-3xl font-bold mb-3 dark:text-white">Message Sent!</h3>
+                  <p className="text-dim dark:text-slate-400 mb-2 text-sm">
                     Thank you for reaching out. We'll review your project details and get back to you within 24 hours.
                   </p>
                   <p className="text-indigo-500 text-sm font-medium mb-8">
@@ -242,23 +248,23 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-dim">Full Name</label>
+                      <label className="text-sm font-medium text-dim dark:text-slate-300">Full Name</label>
                       <input
                         required
                         type="text"
                         placeholder="John Doe"
-                        className="bg-gray-50 border border-gray-200 p-3 rounded-lg focus:border-primary outline-none transition-all"
+                        className="bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 p-3 rounded-lg focus:border-primary dark:focus:border-primary outline-none transition-all dark:text-white"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="text-sm font-medium text-dim">Email Address</label>
+                      <label className="text-sm font-medium text-dim dark:text-slate-300">Email Address</label>
                       <input
                         required
                         type="email"
                         placeholder="john@example.com"
-                        className="bg-gray-50 border border-gray-200 p-3 rounded-lg focus:border-primary outline-none transition-all"
+                        className="bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 p-3 rounded-lg focus:border-primary dark:focus:border-primary outline-none transition-all dark:text-white"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       />
@@ -266,9 +272,9 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-dim">Website Type</label>
+                    <label className="text-sm font-medium text-dim dark:text-slate-300">Website Type</label>
                     <select
-                      className="bg-gray-50 border border-gray-200 p-3 rounded-lg focus:border-primary outline-none transition-all appearance-none"
+                      className="bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 p-3 rounded-lg focus:border-primary dark:focus:border-primary outline-none transition-all appearance-none dark:text-white"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                     >
@@ -282,12 +288,12 @@ export default function Contact() {
                   </div>
 
                   <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-dim">Tell us about your project</label>
+                    <label className="text-sm font-medium text-dim dark:text-slate-300">Tell us about your project</label>
                     <textarea
                       required
                       rows="4"
                       placeholder="Describe your project, budget, timeline..."
-                      className="bg-gray-50 border border-gray-200 p-3 rounded-lg focus:border-primary outline-none transition-all resize-none"
+                      className="bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 p-3 rounded-lg focus:border-primary dark:focus:border-primary outline-none transition-all resize-none dark:text-white"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />

@@ -3,15 +3,15 @@ import { CheckCircle, Users, Lightbulb, Award } from 'lucide-react'
 
 const pillars = [
   { icon: <Lightbulb size={20} className="text-indigo-500" />, text: 'Creative-first thinking' },
-  { icon: <CheckCircle size={20} className="text-green-500" />, text: 'On-time delivery' },
+  { icon: <CheckCircle size={20} className="text-indigo-500" />, text: 'On-time delivery' },
   { icon: <Users size={20} className="text-purple-500" />, text: 'Client-centred approach' },
   { icon: <Award size={20} className="text-amber-500" />, text: 'Premium quality output' },
 ]
 
 export default function About() {
   return (
-    <section id="about" className="py-28 bg-white relative">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+    <section id="about" className="py-28 bg-white dark:bg-bg-dark relative transition-colors duration-300">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 dark:via-indigo-500/30 to-transparent" />
 
       <div className="container px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -64,23 +64,23 @@ export default function About() {
             transition={{ duration: 0.7 }}
           >
             <span className="section-label">Who We Are</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
               A Studio Built for <span className="text-primary">Bold Brands</span>
             </h2>
-            <p className="text-slate-500 leading-relaxed mb-6 font-medium text-lg">
+            <p className="text-slate-500 dark:text-slate-300 leading-relaxed mb-6 font-medium text-lg">
               Inkwell&Code is a Nairobi-based creative studio that blends the precision of 
               code with the artistry of design. We partner with startups, SMEs, and 
               established businesses to create compelling digital experiences and brand identities.
             </p>
-            <div className="bg-indigo-50 border-l-4 border-indigo-500 p-5 rounded-r-xl mb-6">
-              <h3 className="text-indigo-900 font-bold mb-2">Our Story</h3>
-              <p className="text-indigo-700/80 leading-relaxed text-sm">
+            <div className="bg-indigo-50 dark:bg-slate-800 border-l-4 border-indigo-500 p-5 rounded-r-xl mb-6">
+              <h3 className="text-indigo-900 dark:text-indigo-300 font-bold mb-2">Our Story</h3>
+              <p className="text-indigo-700/80 dark:text-slate-400 leading-relaxed text-sm">
                 What started as a shared passion for beautiful interfaces and robust systems quickly grew into Inkwell&Code. 
                 We believe that every brand has a unique voice, and our mission is to translate that voice into experiences 
                 that resonate and drive growth.
               </p>
             </div>
-            <p className="text-slate-500 leading-relaxed mb-10">
+            <p className="text-slate-500 dark:text-slate-400 leading-relaxed mb-10">
               From your first website to a complete brand overhaul, we bring the same 
               level of craft and dedication to every project — no matter the size.
             </p>
@@ -93,10 +93,10 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-3 bg-slate-50 rounded-xl px-4 py-3 border border-slate-100"
+                  className="flex items-center gap-3 bg-slate-50 dark:bg-slate-800 rounded-xl px-4 py-3 border border-slate-100 dark:border-slate-700"
                 >
                   {p.icon}
-                  <span className="text-slate-700 font-medium text-sm">{p.text}</span>
+                  <span className="text-slate-700 dark:text-slate-300 font-medium text-sm">{p.text}</span>
                 </motion.div>
               ))}
             </div>

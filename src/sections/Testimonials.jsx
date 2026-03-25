@@ -22,7 +22,7 @@ const testimonials = [
     name: 'James Mwangi',
     role: 'CEO, Realty Kenya',
     avatar: 'JM',
-    color: 'bg-gradient-to-br from-emerald-400 to-teal-600',
+    color: 'bg-gradient-to-br from-purple-400 to-teal-600',
     review: 'The Tinder for Houses app they built is exactly what our real estate business needed. Sleek, intuitive, and packed with features. Highly recommend.',
     stars: 5,
   },
@@ -46,36 +46,36 @@ function StarRating({ count }) {
   )
 }
 
-function TestimonialCard({ t }) {
-  return (
-    <div className="testimonial-card bg-white rounded-2xl p-8 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.12)] w-[340px] shrink-0 mx-4 flex flex-col justify-between">
-      <div>
-        <StarRating count={t.stars} />
-        <p className="text-slate-600 leading-relaxed my-5 text-[15px] italic">"{t.review}"</p>
-      </div>
-      <div className="flex items-center gap-4 pt-5 border-t border-slate-50 mt-auto">
-        <div className={`w-12 h-12 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-inner ring-4 ring-slate-50`}>
-          {t.avatar}
-        </div>
+  function TestimonialCard({ t }) {
+    return (
+      <div className="testimonial-card bg-white dark:bg-slate-800 rounded-2xl p-6 border border-slate-100 dark:border-slate-700 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgba(99,102,241,0.12)] w-[320px] shrink-0 mx-4 flex flex-col justify-between">
         <div>
-          <p className="font-bold text-slate-900">{t.name}</p>
-          <p className="text-slate-500 text-[11px] font-bold uppercase tracking-wider mt-0.5">{t.role}</p>
+          <StarRating count={t.stars} />
+          <p className="text-slate-600 dark:text-slate-300 leading-snug my-4 text-[14px] italic">"{t.review}"</p>
+        </div>
+        <div className="flex items-center gap-3 pt-4 border-t border-slate-50 dark:border-slate-700/50 mt-auto">
+          <div className={`w-12 h-12 ${t.color} rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0 shadow-inner ring-4 ring-slate-50 dark:ring-slate-800`}>
+            {t.avatar}
+          </div>
+          <div>
+            <p className="font-bold text-slate-900 dark:text-white">{t.name}</p>
+            <p className="text-slate-500 dark:text-slate-400 text-[11px] font-bold uppercase tracking-wider mt-0.5">{t.role}</p>
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
 
 export default function Testimonials() {
   // Duplicate twice for seamless infinite loop
   const looped = [...testimonials, ...testimonials, ...testimonials]
 
   return (
-    <section id="testimonials" className="py-28 bg-slate-50 relative overflow-hidden">
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+    <section id="testimonials" className="py-28 bg-slate-50 dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 dark:via-indigo-500/30 to-transparent" />
 
       {/* Decorative large quote */}
-      <div className="absolute top-12 left-8 text-slate-100 pointer-events-none select-none">
+      <div className="absolute top-12 left-8 text-slate-100 dark:text-slate-800/50 pointer-events-none select-none">
         <Quote size={160} strokeWidth={1} />
       </div>
 
@@ -86,10 +86,10 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
               What Our <span className="text-primary">Clients Say</span>
             </h2>
-            <p className="text-slate-500 max-w-2xl mx-auto">
+            <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
               Don't just take our word for it — hear from the businesses we've helped grow.
             </p>
           </motion.div>
@@ -98,8 +98,8 @@ export default function Testimonials() {
         {/* Marquee track — full width, no container constraint */}
         <div className="marquee-wrapper">
           {/* Fade edges */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-slate-50 to-transparent" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-slate-50 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-slate-50 dark:from-slate-900 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-slate-50 dark:from-slate-900 to-transparent" />
 
           <div className="marquee-track">
             {looped.map((t, i) => (
@@ -109,7 +109,7 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-indigo-200 dark:via-indigo-500/30 to-transparent" />
     </section>
   )
 }

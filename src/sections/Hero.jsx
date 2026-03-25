@@ -9,9 +9,9 @@ const floatingCards = [
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-bg-dark transition-colors duration-300">
       {/* Grid background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:48px_48px] -z-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:48px_48px] -z-20" />
       
       {/* Gradient blobs */}
       <div className="absolute -top-32 -right-32 w-[600px] h-[600px] bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full blur-3xl opacity-60 -z-10" />
@@ -26,7 +26,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-slate-900"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-slate-900 dark:text-white"
             >
               Crafting Your{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600">
@@ -40,7 +40,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="text-lg text-slate-600 mb-10 leading-relaxed max-w-lg"
+              className="text-lg text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-lg"
             >
               Inkwell&Code is a premier creative studio in Nairobi. We blend cutting-edge 
               web development with world-class graphic design to build brands that stand out.
@@ -56,7 +56,7 @@ export default function Hero() {
                 Explore Our Work
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#contact" className="px-7 py-3.5 rounded-xl border-2 border-slate-200 hover:border-primary text-slate-700 hover:text-primary font-semibold transition-all duration-300 text-center">
+              <a href="#contact" className="px-7 py-3.5 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-primary font-semibold transition-all duration-300 text-center">
                 Get a Quote
               </a>
             </motion.div>
@@ -74,8 +74,8 @@ export default function Hero() {
                 { value: '5+', label: 'Years Experience' },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <div className="text-3xl font-bold text-slate-900">{stat.value}</div>
-                  <div className="text-sm text-slate-500 mt-0.5">{stat.label}</div>
+                  <div className="text-3xl font-bold text-slate-900 dark:text-white">{stat.value}</div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400 mt-0.5">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -89,15 +89,15 @@ export default function Hero() {
             className="hidden lg:flex flex-col items-center justify-center relative"
           >
             {/* Browser frame mockup */}
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+            <div className="w-full max-w-md bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-800 overflow-hidden">
               {/* Browser chrome */}
-              <div className="bg-slate-50 border-b border-slate-100 px-4 py-3 flex items-center gap-3">
+              <div className="bg-slate-50 dark:bg-slate-800 border-b border-slate-100 dark:border-slate-700 px-4 py-3 flex items-center gap-3">
                 <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
+                  <div className="w-3 h-3 rounded-full bg-red-400 dark:bg-red-500" />
+                  <div className="w-3 h-3 rounded-full bg-yellow-400 dark:bg-yellow-500" />
+                  <div className="w-3 h-3 rounded-full bg-indigo-400 dark:bg-indigo-500" />
                 </div>
-                <div className="flex-1 bg-white border border-slate-200 rounded-md px-3 py-1 text-xs text-slate-400">
+                <div className="flex-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-md px-3 py-1 text-xs text-slate-400 dark:text-slate-500">
                   inkwellandcode.com
                 </div>
               </div>
@@ -112,9 +112,9 @@ export default function Hero() {
                 </div>
                 <div className="grid grid-cols-3 gap-3">
                   {[1,2,3].map(i => (
-                    <div key={i} className="bg-white rounded-xl p-3 border border-slate-100 shadow-sm">
-                      <div className="w-6 h-6 bg-indigo-100 rounded-lg mb-2" />
-                      <div className="h-2 w-full bg-slate-100 rounded" />
+                    <div key={i} className="bg-white dark:bg-slate-800 rounded-xl p-3 border border-slate-100 dark:border-slate-700 shadow-sm">
+                      <div className="w-6 h-6 bg-indigo-100 dark:bg-indigo-900/50 rounded-lg mb-2" />
+                      <div className="h-2 w-full bg-slate-100 dark:bg-slate-700 rounded" />
                     </div>
                   ))}
                 </div>
@@ -127,14 +127,14 @@ export default function Hero() {
                 key={i}
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3 + i * 0.5, repeat: Infinity, ease: 'easeInOut', delay: i * 0.8 }}
-                className={`absolute bg-white/80 backdrop-blur-md border border-slate-100/50 shadow-xl shadow-indigo-500/5 hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-300 rounded-xl px-4 py-3 flex items-center gap-3 ${
+                className={`absolute bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-100/50 dark:border-slate-700/50 shadow-xl shadow-indigo-500/5 hover:shadow-indigo-500/10 hover:-translate-y-1 transition-all duration-300 rounded-xl px-4 py-3 flex items-center gap-3 ${
                   i === 0 ? '-left-8 top-8' : i === 1 ? '-right-4 top-1/2' : '-left-6 bottom-8'
                 }`}
               >
-                <div className="w-8 h-8 bg-slate-50 rounded-lg flex items-center justify-center">{card.icon}</div>
+                <div className="w-8 h-8 bg-slate-50 dark:bg-slate-700 rounded-lg flex items-center justify-center">{card.icon}</div>
                 <div>
-                  <p className="text-xs font-semibold text-slate-800">{card.label}</p>
-                  <p className="text-[10px] text-slate-400">{card.sub}</p>
+                  <p className="text-xs font-semibold text-slate-800 dark:text-slate-200">{card.label}</p>
+                  <p className="text-[10px] text-slate-400 dark:text-slate-400">{card.sub}</p>
                 </div>
               </motion.div>
             ))}

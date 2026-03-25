@@ -1,14 +1,32 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
-  --color-bg-dark: #ffffff;
+  --color-bg-dark: #020617;
   --color-primary: #6366f1;
   --color-primary-glow: rgba(99, 102, 241, 0.15);
   --color-secondary: #818cf8;
   --color-accent: #a855f7;
-  --color-text-main: #0f172a;
-  --color-text-dim: #64748b;
+  --color-text-main: #f8fafc;
+  --color-text-dim: #94a3b8;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-transparent: transparent;
+
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
 
   --font-inter: "Inter", sans-serif;
   --font-outfit: "Outfit", sans-serif;
@@ -18,19 +36,32 @@
 }
 
 :root {
-  --bg-dark: #ffffff;
+  --bg-dark: #020617;
   --primary: #6366f1;
   --primary-glow: rgba(99, 102, 241, 0.15);
   --secondary: #818cf8;
   --accent: #a855f7;
-  --text-main: #0f172a;
-  --text-dim: #64748b;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --neon-btn-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  --neon-btn-hover: 0 8px 25px rgba(99, 102, 241, 0.4);
+  --wa-pulse-base: 0 4px 20px rgba(37, 211, 102, 0.4);
+  --wa-pulse-peak: 0 4px 32px rgba(37, 211, 102, 0.7);
+  --wa-hover: 0 6px 28px rgba(37, 211, 102, 0.55);
+}
+
+.dark {
+  --neon-btn-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
+  --neon-btn-hover: 0 8px 25px rgba(99, 102, 241, 0.2);
+  --wa-pulse-base: 0 4px 20px rgba(37, 211, 102, 0.15);
+  --wa-pulse-peak: 0 4px 32px rgba(37, 211, 102, 0.25);
+  --wa-hover: 0 6px 28px rgba(37, 211, 102, 0.2);
 }
 
 @layer base {
   body {
-    @apply bg-white text-slate-900 font-inter antialiased overflow-x-hidden;
+    @apply bg-slate-50 text-slate-900 dark:bg-bg-dark dark:text-text-main font-inter antialiased overflow-x-hidden transition-colors duration-300;
   }
 
   h1,
@@ -58,14 +89,13 @@
   }
 
   .neon-btn {
-    @apply bg-primary text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    @apply bg-primary text-white px-7 py-3.5 rounded-xl font-semibold transition-all duration-300 border-2 border-primary;
+    box-shadow: none;
   }
 
   .neon-btn:hover {
-    @apply -translate-y-0.5;
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
-    background-color: #5558e8;
+    @apply -translate-y-0.5 bg-transparent text-primary;
+    box-shadow: none;
   }
 
   .container {
@@ -150,7 +180,7 @@
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 28s linear infinite;
+  animation: marquee 45s linear infinite;
 }
 
 .marquee-wrapper:hover .marquee-track {
@@ -174,12 +204,11 @@
   z-index: 999;
   width: 56px;
   height: 56px;
-  background: #25D366;
+  background: var(--primary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: wa-pulse 2.5s ease-in-out infinite;
 }
@@ -190,7 +219,7 @@
 
 .whatsapp-bubble:hover {
   transform: scale(1.1) translateY(0);
-  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.55);
+  box-shadow: var(--wa-hover);
   animation: none;
 }
 
@@ -230,11 +259,11 @@
 
   0%,
   100% {
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: var(--wa-pulse-base);
   }
 
   50% {
-    box-shadow: 0 4px 32px rgba(37, 211, 102, 0.7);
+    box-shadow: var(--wa-pulse-peak);
   }
 }
 
