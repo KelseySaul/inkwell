@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Volume2, VolumeX, User, Bot, Play, Send, Mic, Tablet, MessageCircle, Home, LayoutGrid } from 'lucide-react'
+import { X, Volume2, VolumeX, User, Cpu, Play, Send, Mic, Tablet, MessageCircle, Home, LayoutGrid } from 'lucide-react'
 import { findMatch } from '../data/botKnowledge'
 
 const BOT_SCRIPT = [
@@ -191,7 +191,7 @@ export default function ChatBot() {
                 className={`fixed bottom-[84px] sm:bottom-[96px] right-4 sm:right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors wa-float ${isOpen ? 'bg-slate-800 text-white' : 'bg-indigo-600 text-white'
                     }`}
             >
-                {isOpen ? <X size={24} /> : <Bot size={28} />}
+                {isOpen ? <X size={24} /> : <Cpu size={28} />}
                 {!isOpen && isSpeaking && (
                     <span className="absolute -top-1 -right-1 flex h-4 w-4">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
@@ -211,7 +211,7 @@ export default function ChatBot() {
                         <div className="bg-slate-900 px-5 py-4 flex items-center justify-between text-white">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-indigo-500 rounded-full flex items-center justify-center shadow-inner relative">
-                                    <Bot size={22} />
+                                    <Cpu size={22} />
                                     <div className={`absolute -bottom-1 -right-1 w-3 h-3 border-2 border-slate-900 rounded-full ${isSpeaking ? 'bg-indigo-500' : 'bg-slate-500'}`}></div>
                                 </div>
                                 <div>
@@ -251,7 +251,7 @@ export default function ChatBot() {
                             {mode === 'menu' ? (
                                 <div className="h-full flex flex-col items-center justify-center text-center p-4">
                                     <div className="w-16 h-16 bg-indigo-100 text-indigo-500 rounded-2xl flex items-center justify-center mb-4">
-                                        <Bot size={32} />
+                                        <Cpu size={32} />
                                     </div>
                                     <h5 className="font-bold text-slate-900 dark:text-white mb-2">How can I help you?</h5>
                                     <p className="text-slate-500 dark:text-slate-400 text-sm mb-6 leading-relaxed">
