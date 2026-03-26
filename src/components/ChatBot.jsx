@@ -188,7 +188,7 @@ export default function ChatBot() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={toggleOpen}
-                className={`fixed bottom-[84px] sm:bottom-[96px] right-4 sm:right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors wa-float ${isOpen ? 'bg-slate-800 text-white' : 'bg-indigo-600 text-white'
+                className={`fixed bottom-[84px] sm:bottom-[96px] right-6 sm:right-6 w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors wa-float ${isOpen ? 'bg-slate-800 text-white' : 'bg-indigo-600 text-white'
                     }`}
             >
                 {isOpen ? <X size={24} /> : <Cpu size={28} />}

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight, Monitor, Palette, Printer } from 'lucide-react'
 
 const floatingCards = [
@@ -7,7 +8,38 @@ const floatingCards = [
   { icon: <Printer size={18} className="text-sky-500" />, label: 'Print Services', sub: 'High Quality' },
 ]
 
+const services = ["Web Development", "Graphic Design", "Branding"]
+
 export default function Hero() {
+  const [serviceIndex, setServiceIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setServiceIndex((prev) => (prev + 1) % services.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
+    },
+  }
+
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-bg-dark transition-colors duration-300">
       {/* Grid background pattern */}
@@ -21,25 +53,38 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           {/* Left: Text */}
-          <div>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            
+
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              variants={itemVariants}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-slate-900 dark:text-white"
             >
-              Crafting Your{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600">
-                Vision
-              </span>
+              Crafting Your <br />
+              <div className="h-[1.2em] relative overflow-hidden inline-block align-bottom min-w-[500px]">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={services[serviceIndex]}
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -40, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    className="absolute left-0 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 inline-block"
+                  >
+                    {services[serviceIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </div>
               <br />
-              Pixel by Print
+              <span className="text-slate-400 dark:text-slate-500">Pixel by Print</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.15 }}
+              variants={itemVariants}
               className="text-lg text-slate-600 dark:text-slate-300 mb-10 leading-relaxed max-w-lg"
             >
               Inkwell&Code is a premier creative studio in Nairobi. We blend cutting-edge 
@@ -47,9 +92,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 mb-12"
             >
               <a href="#projects" className="neon-btn flex items-center justify-center gap-2 group">
@@ -63,9 +106,7 @@ export default function Hero() {
 
             {/* Stats */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
+              variants={itemVariants}
               className="flex flex-wrap gap-8"
             >
               {[
@@ -79,13 +120,14 @@ export default function Hero() {
                 </div>
               ))}
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Right: Visual mockup */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, delay: 0.4 }}
             className="hidden lg:flex flex-col items-center justify-center relative"
           >
             {/* Browser frame mockup */}

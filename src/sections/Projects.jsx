@@ -51,6 +51,78 @@ const graphicsProjects = Array.from({ length: 14 }, (_, i) => ({
   tags: ['Design', 'Branding', 'Print']
 }))
 
+const ProjectBackground = ({ type }) => {
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
+      <AnimatePresence mode="wait">
+        {type === 'Web' ? (
+          <motion.div
+            key="web-bg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0"
+          >
+            {/* Visual coding elements */}
+            <div className="absolute top-[10%] left-[5%] text-[140px] font-mono font-bold text-slate-200/20 dark:text-slate-700/30 -rotate-12 select-none">{"{"}</div>
+            <div className="absolute top-[65%] left-[88%] text-[140px] font-mono font-bold text-slate-200/20 dark:text-slate-700/30 rotate-12 select-none">{"}"}</div>
+            <div className="absolute top-[20%] left-[82%] text-[90px] font-mono font-bold text-slate-200/15 dark:text-slate-700/20 -rotate-6 select-none">{"</>"}</div>
+            <div className="absolute top-[78%] left-[8%] text-[70px] font-mono font-bold text-slate-200/15 dark:text-slate-700/20 rotate-12 select-none">{"[]"}</div>
+            
+            <div className="absolute top-[45%] left-[2%] opacity-20 dark:opacity-30 hidden md:block">
+              <pre className="text-xs font-mono text-primary/60 dark:text-primary/40 leading-tight">
+                {`function createImpact() {
+  const passion = true;
+  const excellence = 100;
+  return passion && excellence;
+}`}
+              </pre>
+            </div>
+
+            <div className="absolute top-[15%] left-[45%] text-[16px] font-mono font-medium text-slate-200/40 dark:text-slate-700/30 select-none hidden lg:block">
+              &lt;section id="innovation"&gt;
+            </div>
+            
+            <div className="absolute bottom-[20%] right-[35%] text-[16px] font-mono font-medium text-slate-200/40 dark:text-slate-700/30 select-none hidden lg:block">
+              &lt;/section&gt;
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="graphics-bg"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0"
+          >
+            {/* Graphics elements - blurry colored shapes */}
+            <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-primary/10 dark:bg-primary/20 rounded-full blur-[120px]" />
+            <div className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-[120px]" />
+            <div className="absolute top-[30%] right-[10%] w-80 h-80 bg-rose-500/10 dark:bg-rose-500/20 rounded-full blur-[100px]" />
+            <div className="absolute bottom-[20%] left-[10%] w-80 h-80 bg-teal-500/10 dark:bg-teal-500/20 rounded-full blur-[100px]" />
+            
+            {/* Creative decorative shapes */}
+            <svg className="absolute top-[12%] right-[12%] w-32 h-32 text-slate-200/40 dark:text-slate-700/40 rotate-12" viewBox="0 0 100 100">
+               <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="8 4" />
+               <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="0.5" />
+            </svg>
+            
+            <svg className="absolute top-[70%] left-[10%] w-40 h-40 text-slate-200/40 dark:text-slate-700/40 -rotate-12" viewBox="0 0 100 100">
+               <rect x="20" y="20" width="60" height="60" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="12 6" />
+               <path d="M20 20 L80 80" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 2" />
+            </svg>
+
+            <div className="absolute top-[40%] left-[5%] w-1 h-32 bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-700 to-transparent opacity-50" />
+            <div className="absolute top-[20%] right-[5%] w-1 h-32 bg-gradient-to-b from-transparent via-slate-200 dark:via-slate-700 to-transparent opacity-50" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export default function Projects() {
   const [filter, setFilter] = useState('Web')
   const [graphicsCount, setGraphicsCount] = useState(6)
@@ -63,8 +135,10 @@ export default function Projects() {
   const displayedProjects = filter === 'Web' ? webProjects : graphicsProjects.slice(0, graphicsCount)
 
   return (
-    <section id="projects" className="py-28 bg-white dark:bg-bg-dark overflow-hidden transition-colors duration-300">
-      <div className="container px-4 md:px-8">
+    <section id="projects" className="relative py-28 bg-white dark:bg-bg-dark overflow-hidden transition-colors duration-300">
+      <ProjectBackground type={filter} />
+      
+      <div className="container px-4 md:px-8 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -181,7 +255,7 @@ export default function Projects() {
           >
             <button 
               onClick={() => setGraphicsCount(prev => prev + 6)}
-              className="px-8 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary font-semibold transition-all duration-300"
+              className="px-8 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:border-primary font-semibold transition-all duration-300"
             >
               Load More Graphics
             </button>

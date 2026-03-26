@@ -7,6 +7,7 @@ import Projects from './sections/Projects'
 import Testimonials from './sections/Testimonials'
 import Contact from './sections/Contact'
 import ChatBot from './components/ChatBot'
+import CustomCursor from './components/CustomCursor'
 
 const WHATSAPP_NUMBER = '254727908419'
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%2C%20I%27d%20like%20to%20get%20a%20quote!`
@@ -32,6 +33,7 @@ function WhatsAppBubble() {
 function App() {
   return (
     <div className="min-h-screen selection:bg-indigo-100 selection:text-indigo-700 dark:selection:bg-primary-glow dark:selection:text-primary">
+      <CustomCursor />
       <Navbar />
       <main>
         <Hero />
