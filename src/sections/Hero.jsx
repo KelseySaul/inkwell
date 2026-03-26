@@ -8,18 +8,7 @@ const floatingCards = [
   { icon: <Printer size={18} className="text-sky-500" />, label: 'Print Services', sub: 'High Quality' },
 ]
 
-const services = ["Web Development", "Graphic Design", "Branding"]
-
 export default function Hero() {
-  const [serviceIndex, setServiceIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setServiceIndex((prev) => (prev + 1) % services.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,6 +28,8 @@ export default function Hero() {
       transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] }
     },
   }
+
+  const visionText = "Vision"
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-white dark:bg-bg-dark transition-colors duration-300">
@@ -65,20 +56,22 @@ export default function Hero() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-[1.1] text-slate-900 dark:text-white"
             >
               Crafting Your <br />
-              <div className="h-[1.2em] relative overflow-hidden inline-block align-bottom min-w-[500px]">
-                <AnimatePresence mode="wait">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 inline-block">
+                {visionText.split("").map((char, index) => (
                   <motion.span
-                    key={services[serviceIndex]}
-                    initial={{ y: 40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -40, opacity: 0 }}
-                    transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-                    className="absolute left-0 text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 inline-block"
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ 
+                      duration: 0.2,
+                      delay: 0.8 + index * 0.1,
+                      ease: "easeIn"
+                    }}
                   >
-                    {services[serviceIndex]}
+                    {char}
                   </motion.span>
-                </AnimatePresence>
-              </div>
+                ))}
+              </span>
               <br />
               <span className="text-slate-400 dark:text-slate-500">Pixel by Print</span>
             </motion.h1>
